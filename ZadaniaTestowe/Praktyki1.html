@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktyki 1</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        [class*="col"] {
+           padding: 1rem;
+           border: 32px solid #fff;
+           color: #000000;
+           text-align: center;
+       }
+       [class*="baner"] {
+           background-color: #fff;
+           border: 32px solid #fff;
+           color: #fff;
+           text-align: left;
+           font-size: 3rem;
+           background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt-hG3totz8nUpOFkzeTvCw-ttVjJRUIphTw&s'); /* Ścieżka do obrazu */
+           background-size: cover; /* Dopasowanie rozmiaru obrazu do sekcji */
+           background-position: center; /* Wyśrodkowanie obrazu */
+       }
+       [class*="updates"] {
+           padding: 2rem;
+           color: #000000;
+           text-align: center;
+       }
+       [class*="get-started"] {
+           padding: 2rem;
+           background-color: #979790;
+           border: 32px solid #fff;
+           color: #000000;
+           text-align: center;
+       }
+       body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .success-message {
+            color: green;
+            font-size: 1.2rem;
+            display: none; /* Ukrycie komunikatu początkowo */
+        }
+       [class*="need-help"] {
+           padding: 2rem;
+           border: 32px solid #fff;
+           color: #000000;
+           text-align: center;
+       }
+       [class*="footer"] {
+           padding: 0.125rem;
+           background-color: black;
+           color: #fff;
+           text-align: center;
+       }
+    </style>
+</head>
+<body style="background-color: white">
+    <section id="baner">
+        <div class="baner">
+            <div><p>Witaj na mojej</p>
+            <b><p style="color: rgb(251, 251, 251)">stronie</p></b></div>Poniżej znajdziesz parę przydatnych odniesień:<br>
+            <button type="button" class="btn btn-outline-light" onclick="scrollToSection('updates')">Aktualności</button>
+            <button type="button" class="btn btn-outline-light" onclick="scrollToSection('get-started')">Dołącz do nas</button>
+            <button type="button" class="btn btn-outline-light" onclick="scrollToSection('need-help')">Pomoc</button>
+        </div>
+    </section>
+    <hr>
+    <header class="text-center">
+        <h1>Co tutaj znajdziesz?</h2>
+    </header>
+    <hr>
+    <section id="updates">
+        <div class="updates">
+            <div class="container-lg my-5">
+                <div class="row">
+                    <div class="col"><b>Pętle w PHP</b> 
+                        <p>Pod tym <a href="#">linkiem</a> znajdują się przykłady pętli FOR, DO...WHILE oraz FOREACH</p>
+                    </div>
+                    <div class="col"><b>Przykład strony HTML z użyciem Bootstrap 5</b>
+                        <p>Jest to mój pierwszy projekt z wykorzystaniem Bootstrapa 5, za wszelkie pomyłki z góry przepraszam :)</p>
+                    </div>
+                    <div class="col"><b>"Dawca organów" dla przyszłych projektów</b>
+                        <p>Ów projekt najpewniej posłuży mi w przyszłości</p>
+                    </div>
+        </div>
+    </section>
+    <hr>
+    <section id="get-started">
+        <div class="get-started">
+            <div class="container-lg my-5">
+                    <h3 style="text-align: center">Jak do nas dołączyć?</h3>
+                <div class="row">
+                    <div class="col">Aby się zarejestrować, w formularzu obok podaj swoję imię oraz adres e-mail</div>
+                    <div class="col">
+                        <form id="registrationForm" onsubmit="handleSubmit(event)">
+                            <label for="name">Imię:</label>
+                            <input type="text" id="name" name="name" required>
+                            <label for="email">Adres e-mail:</label>
+                            <input type="email" id="email" name="email" required>
+                            <button type="submit">Zarejestruj się</button>
+                        </form>
+                        <div class="success-message" id="successMessage">
+                            Rejestracja zakończona pomyślnie! Dziękujemy za rejestrację.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <br><br><br><br><br><br><br><br>
+    <section id="need-help">
+            <div class="need-help">
+             <h2>Jeżeli potrzebujesz pomocy, kliknij <a href="#"><b>tutaj</b></a></h2>  
+            </div>
+    </section>
+    <br><br><br><br><br><br><br><br>
+    <footer class="footer">&copy 2024 Piotr Lewandowski</footer>
+    <script>
+        function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        section.scrollIntoView({ behavior: 'smooth' }); // Gładkie przewijanie do odpowiedniej sekcji
+    }
+    </script>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Zapobiega domyślnemu odświeżeniu strony
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            // Wyświetlenie komunikatu o pomyślnej rejestracji
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            // Opcjonalnie: Można tu dodać logikę do przetwarzania danych (np. wysłanie na serwer)
+            console.log(`Imię: ${name}, E-mail: ${email}`);
+        }
+    </script> 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>  
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
