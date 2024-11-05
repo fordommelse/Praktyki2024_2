@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Part>
+
+    @{
+        ViewBag.Title = "List of parts";
+    }
+
+<h1>Parts</h1>
+<a asp-action="Create">Create New Part</a>
+<table class = "table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(Model => Model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach(Part i in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => i.Name)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@i.PartId">Details</a>
+                    <a asp-action="Edit" asp-route-id="@i.PartId">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@i.PartId">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
